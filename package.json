@@ -18,7 +18,8 @@
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
-    "lint-staged": "^15.2.0"
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.0"
   },
   "config": {
     "commitizen": {
@@ -26,13 +27,8 @@
     }
   },
   "lint-staged": {
-    "backend/**/*.py": [
-      "cd backend && python -m black",
-      "cd backend && python -m isort",
-      "cd backend && python -m flake8"
-    ],
-    "backend/**/*.{py,pyi}": [
-      "cd backend && python -m pytest --tb=short"
+    "*.{js,jsx,ts,tsx,json,md}": [
+      "prettier --write"
     ]
   },
   "keywords": [

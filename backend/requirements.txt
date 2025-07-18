@@ -1,0 +1,58 @@
+# FastAPI and ASGI server
+fastapi
+uvicorn[standard]
+
+# Database
+sqlalchemy
+psycopg2-binary
+asyncpg
+greenlet
+
+# Authentication and Security
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+
+# Environment and Configuration
+python-dotenv
+pydantic
+pydantic-settings
+
+# AI Integration
+openai
+
+# Caching and Sessions
+redis
+aioredis
+
+# HTTP Client
+httpx
+
+# Validation and Serialization
+email-validator
+
+# Development and Testing
+pytest
+pytest-asyncio
+pytest-cov
+
+# Code Quality
+black
+flake8
+isort
+mypy
+
+# Pre-commit hooks
+pre-commit
+
+# Logging
+structlog
+
+# CORS
+fastapi-cors
+
+# Rate Limiting
+slowapi
+
+# Health Checks
+healthcheck 
