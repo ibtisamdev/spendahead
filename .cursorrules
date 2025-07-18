@@ -1,0 +1,348 @@
+You are helping me build an AI-powered personal finance tracker.
+
+## Project Context
+
+- Frontend: React with TypeScript and Tailwind CSS
+
+- Backend: FastAPI with PostgreSQL
+
+- AI: OpenAI integration for categorization and insights
+
+- Authentication: JWT-based
+
+- Testing: Pytest (backend), Jest + React Testing Library (frontend)
+
+- State Management: React hooks and context
+
+- API Documentation: FastAPI auto-generated docs
+
+## Code Quality & Standards
+
+- Write clean, readable, and maintainable code
+
+- Follow language-specific best practices and conventions
+
+- Use meaningful variable and function names
+
+- Keep functions small and focused (max 20-30 lines)
+
+- Avoid code duplication - prefer reusable components/functions
+
+- Add comprehensive error handling with try-catch blocks
+
+- Include input validation for all user data
+
+- Write self-documenting code with clear intent
+
+- Use consistent formatting and indentation
+
+- Prefer explicit over implicit behavior
+
+- Use TypeScript for all frontend code with strict mode
+
+- Follow FastAPI best practices with proper type hints
+
+- Use Pydantic models for all data validation
+
+- Add docstrings to all functions, classes, and modules
+
+- Include parameter types and return types in documentation
+
+## Security Requirements
+
+- Never hardcode sensitive information (API keys, passwords, database URLs)
+
+- Use environment variables for all configuration
+
+- Validate all user inputs on both frontend and backend
+
+- Implement proper JWT token validation with refresh mechanism
+
+- Use HTTPS for all external communications
+
+- Sanitize data to prevent SQL injection and XSS attacks
+
+- Implement proper authentication and authorization
+
+- Follow OWASP security guidelines
+
+- Implement rate limiting for API endpoints
+
+- Log security events appropriately
+
+- Use parameterized queries to prevent SQL injection
+
+- Implement proper CORS policies
+
+## Testing & Quality Assurance
+
+- Write unit tests for all business logic
+
+- Achieve at least 80% code coverage
+
+- Test edge cases and error scenarios
+
+- Mock external dependencies in tests
+
+- Use descriptive test names that explain the scenario
+
+- Implement integration tests for critical user flows
+
+- Test both success and failure paths
+
+- Validate data integrity in tests
+
+- Use Pytest for backend testing
+
+- Use Jest and React Testing Library for frontend testing
+
+- Test API endpoints with proper status codes
+
+- Mock AI API calls in tests
+
+## Performance & Optimization
+
+- Optimize database queries with proper indexing
+
+- Implement caching strategies where appropriate
+
+- Use pagination for large datasets
+
+- Minimize bundle sizes with code splitting
+
+- Optimize images and assets
+
+- Implement lazy loading for better UX
+
+- Monitor and optimize memory usage
+
+- Use efficient algorithms and data structures
+
+- Implement connection pooling for database
+
+- Use Redis for session storage and caching
+
+## Finance App Specific
+
+- Handle all monetary values as Decimal types (not float)
+
+- Implement proper currency formatting and validation
+
+- Use ISO 8601 date format for all date handling
+
+- Validate transaction amounts (positive for income, negative for expenses)
+
+- Implement audit trails for all financial transactions
+
+- Ensure data integrity with database constraints
+
+- Handle timezone conversions properly
+
+- Implement proper rounding for currency calculations
+
+- Validate budget constraints before saving transactions
+
+- Use appropriate data types for financial calculations
+
+- Implement proper date handling and timezone awareness
+
+- Add audit trails for transactions
+
+- Use intuitive UI for financial data
+
+## UI/UX Rules for Financial Data
+
+- Use intuitive color coding: green for income, red for expenses
+
+- Display currency values with proper formatting ($1,234.56)
+
+- Show loading states during API calls
+
+- Implement proper form validation with clear error messages
+
+- Use responsive design for mobile and desktop
+
+- Add confirmation dialogs for destructive actions
+
+- Implement proper keyboard navigation
+
+- Use accessible color contrast ratios
+
+- Add tooltips for complex financial terms
+
+- Show progress indicators for long operations
+
+- Use Tailwind CSS for styling with custom components
+
+- Implement dark mode support
+
+- Use intuitive icons for financial categories
+
+## API Design Rules
+
+- Use RESTful conventions for all endpoints
+
+- Implement proper HTTP status codes
+
+- Return consistent JSON response formats
+
+- Include pagination for list endpoints
+
+- Implement proper filtering and sorting
+
+- Use query parameters for optional filters
+
+- Include proper error responses with messages
+
+- Implement rate limiting for all endpoints
+
+- Add request/response logging
+
+- Use proper HTTP methods (GET, POST, PUT, DELETE)
+
+- Document all endpoints with FastAPI
+
+- Use Pydantic for request/response models
+
+- Implement proper error handling middleware
+
+## Database Rules
+
+- Use proper foreign key relationships
+
+- Implement database constraints for data integrity
+
+- Use appropriate indexes for query performance
+
+- Implement soft deletes where appropriate
+
+- Use transactions for multi-step operations
+
+- Implement proper database migrations
+
+- Use connection pooling for performance
+
+- Implement proper backup strategies
+
+- Use environment-specific database configurations
+
+- Use SQLAlchemy ORM with proper models
+
+- Implement database connection error handling
+
+## AI Integration
+
+- Implement proper API rate limiting for OpenAI
+
+- Cache AI responses when appropriate
+
+- Provide fallback categorization options
+
+- Handle AI service failures gracefully
+
+- Implement retry logic for transient failures
+
+- Log AI API usage for monitoring
+
+- Validate AI responses before saving
+
+- Implement proper error handling for AI failures
+
+- Use appropriate AI models for different tasks
+
+- Implement cost monitoring for AI usage
+
+- Handle AI service failures gracefully
+
+- Cache AI responses when appropriate
+
+- Provide fallback categorization options
+
+## Version Control & Collaboration
+
+- Make small, focused commits
+
+- Use descriptive branch names (feature/, bugfix/, hotfix/)
+
+- Write clear pull request descriptions
+
+- Review code before merging
+
+- Keep main/master branch stable
+
+- Use conventional commit messages
+
+- Tag releases appropriately
+
+- Document breaking changes
+
+- Use meaningful commit messages
+
+## Conventional Commit Rules
+
+- ALWAYS use conventional commit format: `<type>(<scope>): <description>`
+
+- Valid commit types: feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert
+
+- Use lowercase for type and scope
+
+- Keep description under 72 characters
+
+- Use imperative mood ("add" not "added" or "adds")
+
+- Examples:
+  - feat(auth): add JWT token validation
+  - fix(api): resolve database connection timeout
+  - docs(readme): update installation instructions
+  - style(frontend): format components with prettier
+  - refactor(backend): extract user service logic
+  - test(api): add unit tests for transaction endpoints
+  - chore(deps): update dependencies to latest versions
+  - perf(database): optimize query performance
+  - ci(github): add automated testing workflow
+  - build(docker): update container configuration
+  - revert: revert to previous stable version
+
+- For breaking changes, use: `<type>(<scope>)!: <description>`
+
+- For commits with body, separate with blank line and use body for detailed explanation
+
+- Scope should be specific to the area being changed (e.g., auth, api, frontend, backend, database)
+
+- Never use generic commit messages like "update", "fix", "change"
+
+- Always describe what the commit accomplishes, not what was done
+
+## Error Handling & Logging
+
+- Implement comprehensive error handling
+
+- Log errors with appropriate levels (DEBUG, INFO, WARNING, ERROR)
+
+- Provide user-friendly error messages
+
+- Implement proper exception handling
+
+- Use structured logging
+
+- Monitor application health
+
+- Implement proper error recovery mechanisms
+
+## Development Workflow
+
+- Use environment variables for all configuration
+
+- Implement proper development, staging, and production environments
+
+- Use Docker for containerization
+
+- Implement CI/CD pipelines
+
+- Use linting and formatting tools
+
+- Implement code review processes
+
+- Use dependency management tools
+
+- Implement proper logging and monitoring

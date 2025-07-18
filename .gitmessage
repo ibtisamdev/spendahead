@@ -1,0 +1,51 @@
+# Conventional Commits
+# <type>(<scope>): <description>
+#
+# Types:
+#   feat     (new feature for the user, not a new feature for build script)
+#   fix      (bug fix for the user, not a fix to a build script)
+#   docs     (changes to the documentation)
+#   style    (formatting, missing semi colons, etc; no production code change)
+#   refactor (refactoring production code, eg. renaming a variable)
+#   test     (adding missing tests, refactoring tests; no production code change)
+#   chore    (updating grunt tasks etc; no production code change)
+#   perf     (performance improvements)
+#   ci       (CI configuration changes)
+#   build    (build system changes)
+#   revert   (revert previous commit)
+#
+# Scopes:
+#   auth, api, frontend, backend, database, ui, etc.
+#
+# Examples:
+#   feat(auth): add JWT token validation
+#   fix(api): resolve database connection timeout
+#   docs(readme): update installation instructions
+#   style(frontend): format components with prettier
+#   refactor(backend): extract user service logic
+#   test(api): add unit tests for transaction endpoints
+#   chore(deps): update dependencies to latest versions
+#   perf(database): optimize query performance
+#   ci(github): add automated testing workflow
+#   build(docker): update container configuration
+#   revert: revert to previous stable version
+#
+# Breaking changes:
+#   feat(auth)!: remove deprecated login endpoint
+#
+# Body (optional):
+#   - More detailed explanatory text
+#   - Wrap at 72 characters
+#
+# Footer (optional):
+#   - References to issues
+#   - Breaking change notes
+#
+# Example:
+#   feat(auth): add OAuth2 support for Google login
+#
+#   This commit adds OAuth2 authentication support for Google login,
+#   including proper token validation and user profile creation.
+#
+#   Closes #123
+#   Breaking: removes legacy username/password login 
