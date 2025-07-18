@@ -582,9 +582,9 @@ npm run build --verbose
 
 ### Phase 1: Foundation ✅
 
-- [x] User authentication system
-- [x] Basic transaction management
-- [x] Database design and setup
+- [ ] User authentication system
+- [ ] Basic transaction management
+- [ ] Database design and setup
 
 ### Phase 2: Core Features 🚧
 

@@ -6,19 +6,34 @@
   "scripts": {
     "commit": "cz",
     "commit:retry": "cz --retry",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:backend": "cd backend && python -m black . && python -m isort . && python -m flake8 .",
+    "test:backend": "cd backend && python -m pytest",
+    "lint:frontend": "echo 'Frontend linting will be added when frontend is created'",
+    "test:frontend": "echo 'Frontend testing will be added when frontend is created'"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
   },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "backend/**/*.py": [
+      "cd backend && python -m black",
+      "cd backend && python -m isort",
+      "cd backend && python -m flake8"
+    ],
+    "backend/**/*.{py,pyi}": [
+      "cd backend && python -m pytest --tb=short"
+    ]
   },
   "keywords": [
     "finance",
