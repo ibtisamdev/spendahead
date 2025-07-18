@@ -7,3 +7,7 @@ This package contains versioned API endpoints for:
 - Categories and budgets
 - AI insights and analytics
 """
+
+from . import auth, health
+
+__all__ = ["auth", "health"]

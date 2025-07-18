@@ -16,7 +16,7 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 from slowapi.util import get_remote_address
 
-from app.api.v1 import health
+from app.api.v1 import auth, health
 from app.core.config import settings
 from app.core.database import create_tables
 from app.core.logging import get_logger, setup_logging
@@ -68,6 +68,7 @@ app = FastAPI(
     redoc_url="/redoc" if settings.debug else None,
     openapi_url="/openapi.json" if settings.debug else None,
     lifespan=lifespan,
+    debug=settings.debug,
 )
 
 # Add rate limiting
@@ -151,6 +152,7 @@ async def add_process_time_header(request: Request, call_next) -> Response:
 
 # Include API routes
 app.include_router(health.router, prefix="/api/v1")
+app.include_router(auth.router, prefix="/api/v1")
 
 
 @app.get("/")

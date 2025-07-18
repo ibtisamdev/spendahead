@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     # Application Settings
     app_name: str = Field(default="SpendAhead Backend")
     app_version: str = Field(default="0.1.0")
-    debug: bool = Field(default=False)
+    debug: bool = Field(default=True)
     environment: str = Field(default="development")
 
     # Server Settings

@@ -6,6 +6,7 @@ black
 
 # Validation and Serialization
 email-validator
+pydantic[email]
 # FastAPI and ASGI server
 fastapi
 
