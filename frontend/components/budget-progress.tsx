@@ -1,7 +1,7 @@
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, TrendingUp, TrendingDown, AlertTriangle, CheckCircle } from "lucide-react"
+import { AlertTriangle, ArrowRight, CheckCircle, TrendingDown, TrendingUp } from "lucide-react"
 
 interface BudgetItem {
   id: string
@@ -11,6 +11,7 @@ interface BudgetItem {
   color: string
   icon: string
   gradient: string
+  progressGradient: string
   trend: "up" | "down" | "stable"
   trendPercentage: number
 }
@@ -24,6 +25,7 @@ const budgetData: BudgetItem[] = [
     color: "bg-orange-500",
     icon: "🍽️",
     gradient: "from-orange-500 to-red-500",
+    progressGradient: "[&>div]:from-orange-500 [&>div]:to-red-500",
     trend: "up",
     trendPercentage: 15,
   },
@@ -35,6 +37,7 @@ const budgetData: BudgetItem[] = [
     color: "bg-blue-500",
     icon: "🚗",
     gradient: "from-blue-500 to-indigo-500",
+    progressGradient: "[&>div]:from-blue-500 [&>div]:to-indigo-500",
     trend: "down",
     trendPercentage: 8,
   },
@@ -46,6 +49,7 @@ const budgetData: BudgetItem[] = [
     color: "bg-pink-500",
     icon: "🛍️",
     gradient: "from-pink-500 to-rose-500",
+    progressGradient: "[&>div]:from-pink-500 [&>div]:to-rose-500",
     trend: "up",
     trendPercentage: 25,
   },
@@ -145,11 +149,12 @@ export function BudgetProgress() {
                 <div className="space-y-2">
                   <Progress
                     value={Math.min(percentage, 100)}
-                    className={`h-2 rounded-full ${
-                      isOverBudget
-                        ? "[&>div]:bg-gradient-to-r [&>div]:from-red-500 [&>div]:to-red-600"
-                        : `[&>div]:bg-gradient-to-r [&>div]:${item.gradient}`
-                    }`}
+                    className={`h-2 rounded-full [&>div]:bg-gradient-to-r ${isOverBudget
+                        ? "[&>div]:from-red-500 [&>div]:to-red-600"
+                        : isNearLimit
+                          ? "[&>div]:from-amber-500 [&>div]:to-orange-500"
+                          : item.progressGradient
+                      }`}
                   />
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-1">
@@ -160,11 +165,12 @@ export function BudgetProgress() {
                       ) : (
                         <CheckCircle className="h-3 w-3 text-emerald-600" />
                       )}
-                      <span className={`text-xs font-bold ${isOverBudget ? "text-red-600" : "text-gray-600"}`}>
+                      <span className={`text-xs font-bold ${isOverBudget ? "text-red-600" : isNearLimit ? "text-amber-600" : "text-emerald-600"}`}>
                         {percentage.toFixed(0)}%
                       </span>
                     </div>
-                    <span className="text-xs font-medium text-gray-500">
+                    <span className={`text-xs font-medium ${isOverBudget ? "text-red-600" : isNearLimit ? "text-amber-600" : "text-emerald-600"
+                      }`}>
                       {isOverBudget ? "Over budget" : isNearLimit ? "Near limit" : "On track"}
                     </span>
                   </div>
