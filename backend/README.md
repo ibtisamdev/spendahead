@@ -1,305 +1,192 @@
 # SpendAhead Backend
 
-AI-powered personal finance tracker backend built with FastAPI, PostgreSQL, and OpenAI integration.
+AI-powered personal finance tracker backend built with FastAPI, PostgreSQL, and Redis.
 
-## 🚀 Features
+## 🚀 Quick Start
 
-- **FastAPI Framework**: Modern, fast web framework for building APIs
-- **PostgreSQL Database**: Robust relational database with async support
-- **JWT Authentication**: Secure token-based authentication
-- **AI Integration**: OpenAI-powered transaction categorization and insights
-- **Rate Limiting**: API rate limiting for security
-- **Structured Logging**: Comprehensive logging with structlog
-- **Database Migrations**: Alembic for database schema management
-- **Code Quality**: Pre-commit hooks with black, isort, flake8, and mypy
-- **Testing**: Pytest with async support and coverage reporting
-- **Health Checks**: Application health monitoring endpoints
+### Prerequisites
 
-## 📋 Prerequisites
+- macOS with Homebrew
+- Python 3.8+
+- Git
 
-- Python 3.11 or higher
-- PostgreSQL 12 or higher
-- Redis (optional, for caching)
-- OpenAI API key (for AI features)
-
-## 🛠️ Installation
-
-### 1. Clone the Repository
+### Setup (5 minutes)
 
 ```bash
-git clone <repository-url>
-cd spendahead/backend
-```
-
-### 2. Run Setup Script
-
-```bash
-./scripts/setup.sh
-```
-
-This script will:
-
-- Check Python version
-- Create virtual environment
-- Install dependencies
-- Initialize Alembic
-- Install pre-commit hooks
-- Create `.env` file from template
-
-### 3. Manual Setup (Alternative)
-
-If you prefer manual setup:
-
-```bash
-# Create virtual environment
-python3 -m venv venv
+# 1. Activate virtual environment
 source venv/bin/activate
 
-# Install dependencies
+# 2. Install dependencies
 pip install -r requirements.txt
-pip install -e ".[dev]"
 
-# Initialize Alembic
-alembic init alembic
+# 3. Run automated setup
+./scripts/setup_local.sh
+python scripts/setup_database.py
 
-# Install pre-commit hooks
-pre-commit install
-
-# Copy environment template
-cp env.example .env
+# 4. Start development server
+uvicorn app.main:app --reload
 ```
 
-## ⚙️ Configuration
+### What You'll Get
 
-### Environment Variables
+- ✅ PostgreSQL database with all tables
+- ✅ Redis cache server
+- ✅ Sample user: `demo@spendahead.com` / `demo123`
+- ✅ 19 default categories
+- ✅ 4 default accounts
+- ✅ Sample monthly budget
+- ✅ Working API endpoints
 
-Copy `env.example` to `.env` and update the values:
+## 📚 Documentation
+
+All documentation has been organized in the `docs/` folder:
+
+- **[📖 Complete Documentation](../docs/README.md)** - Main documentation index
+- **[🚀 Quick Start Guide](../docs/QUICK_START.md)** - Get up and running in 10 minutes
+- **[🗄️ Database Setup Guide](../docs/DATABASE_SETUP.md)** - Comprehensive database setup
+- **[📊 Database Implementation Summary](../docs/DATABASE_IMPLEMENTATION_SUMMARY.md)** - Technical overview
+- **[📋 Product Requirements Document](../docs/PRD.md)** - Complete project specifications
+- **[🎯 Development Roadmap](../ROADMAP.md)** - Development phases and milestones
+
+## 🔧 Development
+
+### Daily Workflow
 
 ```bash
-# Application Settings
-APP_NAME=SpendAhead Backend
-APP_VERSION=0.1.0
-DEBUG=true
-ENVIRONMENT=development
+# Start services
+brew services start postgresql@15
+brew services start redis
 
-# Server Settings
-HOST=0.0.0.0
-PORT=8000
-RELOAD=true
-
-# Database Settings
-DATABASE_URL=postgresql+asyncpg://user:password@localhost:5432/spendahead
-DATABASE_URL_SYNC=postgresql://user:password@localhost:5432/spendahead
-
-# Security Settings
-SECRET_KEY=your-secret-key-here-change-in-production
-
-# AI Integration
-OPENAI_API_KEY=your-openai-api-key-here
-```
-
-### Database Setup
-
-1. Create PostgreSQL database:
-
-```sql
-CREATE DATABASE spendahead;
-```
-
-2. Run migrations:
-
-```bash
-alembic upgrade head
-```
-
-## 🚀 Running the Application
-
-### Development Server
-
-```bash
-# Activate virtual environment
+# Activate environment and start server
 source venv/bin/activate
-
-# Start development server
-python -m uvicorn app.main:app --reload
+uvicorn app.main:app --reload
 ```
 
-### Production Server
+### API Endpoints
+
+- **Health Check**: http://localhost:8000/api/v1/health/
+- **API Documentation**: http://localhost:8000/docs
+- **Root**: http://localhost:8000/
+
+### Database Management
 
 ```bash
-# Using uvicorn
-uvicorn app.main:app --host 0.0.0.0 --port 8000
-
-# Using gunicorn (recommended for production)
-gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker
-```
-
-## 📚 API Documentation
-
-Once the server is running, access the API documentation:
-
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-- **OpenAPI JSON**: http://localhost:8000/openapi.json
-
-## 🧪 Testing
-
-### Run Tests
-
-```bash
-# Run all tests
-pytest
-
-# Run with coverage
-pytest --cov=app --cov-report=html
-
-# Run specific test file
-pytest tests/test_auth.py
-
-# Run with verbose output
-pytest -v
-```
-
-### Test Categories
-
-- **Unit Tests**: Test individual functions and classes
-- **Integration Tests**: Test API endpoints and database operations
-- **Slow Tests**: Tests that take longer to run (database operations)
-
-```bash
-# Run only unit tests
-pytest -m "not integration and not slow"
-
-# Run only integration tests
-pytest -m integration
-
-# Run slow tests
-pytest -m slow
-```
-
-## 🔧 Development Tools
-
-### Code Quality
-
-```bash
-# Format code
-black .
-
-# Sort imports
-isort .
-
-# Lint code
-flake8 .
-
-# Type checking
-mypy .
-
-# Security audit
-bandit -r .
-```
-
-### Pre-commit Hooks
-
-Pre-commit hooks are automatically installed and will run on every commit:
-
-```bash
-# Run pre-commit hooks manually
-pre-commit run --all-files
-
-# Skip pre-commit hooks (not recommended)
-git commit --no-verify
-```
-
-### Database Migrations
-
-```bash
-# Create new migration
-alembic revision --autogenerate -m "Description of changes"
-
-# Apply migrations
+# Run migrations
 alembic upgrade head
 
-# Rollback migration
-alembic downgrade -1
+# Reset database
+dropdb spendahead_dev && createdb spendahead_dev
+python scripts/setup_database.py
 
-# Show migration history
-alembic history
+# Run tests
+pytest tests/
 ```
 
-## 📁 Project Structure
+## 🗄️ Database Schema
 
+### Core Tables
+
+- **users** - User accounts and authentication
+- **categories** - Transaction categories with hierarchy
+- **accounts** - Financial accounts (bank, credit card, cash, etc.)
+- **transactions** - Financial transactions with AI categorization
+- **budgets** - Budget management with periods
+- **budget_items** - Individual budget category allocations
+
+### AI & Analytics Tables
+
+- **ai_insights** - AI-generated financial insights
+- **audit_logs** - Complete audit trail for compliance
+
+## 🛠️ Technology Stack
+
+- **Framework**: FastAPI with async support
+- **Database**: PostgreSQL 15 with asyncpg driver
+- **Cache**: Redis 7 with async support
+- **ORM**: SQLAlchemy 2.0 with async support
+- **Migrations**: Alembic
+- **Testing**: Pytest with async support
+- **Code Quality**: Black, isort, flake8, pre-commit
+
+## 🎯 Features
+
+### Implemented ✅
+
+- Complete database schema with migrations
+- User management system
+- Category hierarchy with AI support
+- Account management (bank, credit card, cash, investment)
+- Transaction system with AI categorization
+- Budget management with periods
+- Audit logging system
+- Health check endpoints
+- Local development setup
+
+### In Progress 🚧
+
+- JWT authentication system
+- CRUD API endpoints
+- AI integration (OpenAI)
+- Frontend integration
+
+### Planned 📋
+
+- Advanced analytics
+- Real-time features
+- Mobile optimization
+- Production deployment
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+```bash
+# PostgreSQL not running
+brew services restart postgresql@15
+
+# Redis not running
+brew services restart redis
+
+# Migration issues
+alembic downgrade base && alembic upgrade head
 ```
-backend/
-├── alembic/                 # Database migrations
-├── app/
-│   ├── api/                # API routes
-│   │   └── v1/            # Version 1 API endpoints
-│   ├── core/              # Core application components
-│   │   ├── config.py      # Configuration management
-│   │   ├── database.py    # Database setup
-│   │   ├── security.py    # Security utilities
-│   │   └── logging.py     # Logging configuration
-│   ├── models/            # Database models
-│   └── main.py           # FastAPI application
-├── scripts/               # Utility scripts
-├── tests/                 # Test files
-├── requirements.txt       # Python dependencies
-├── pyproject.toml        # Project configuration
-├── alembic.ini          # Alembic configuration
-├── .pre-commit-config.yaml # Pre-commit hooks
-└── env.example           # Environment variables template
-```
 
-## 🔒 Security
+### Getting Help
 
-- JWT tokens for authentication
-- Password hashing with bcrypt
-- Rate limiting on API endpoints
-- CORS configuration
-- Input validation with Pydantic
-- SQL injection prevention with SQLAlchemy
+1. Check the [documentation](../docs/README.md)
+2. Review application logs
+3. Test health endpoints
+4. Verify all services are running
 
-## 📊 Monitoring
+## 📊 Project Status
 
-### Health Checks
+### Phase 1: Foundation ✅
 
-- `/health` - Basic health check
-- `/health/detailed` - Detailed health with service status
-- `/health/ready` - Kubernetes readiness probe
-- `/health/live` - Kubernetes liveness probe
+- [x] Project structure setup
+- [x] Database design and setup
+- [ ] Authentication system
+- [ ] Basic API endpoints
 
-### Logging
+### Next Steps
 
-Structured logging with different levels:
-
-- `DEBUG` - Detailed debugging information
-- `INFO` - General information
-- `WARNING` - Warning messages
-- `ERROR` - Error messages
+1. **Authentication**: JWT implementation
+2. **API Development**: CRUD endpoints for all entities
+3. **Frontend Integration**: React frontend setup
+4. **AI Integration**: OpenAI API integration
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Run tests: `pytest`
-5. Format code: `black . && isort .`
-6. Commit your changes: `git commit -m 'feat: add amazing feature'`
-7. Push to the branch: `git push origin feature/amazing-feature`
-8. Open a Pull Request
+1. Follow the [conventional commit format](https://www.conventionalcommits.org/)
+2. Run tests before submitting: `pytest tests/`
+3. Ensure code quality: `pre-commit run --all-files`
+4. Update documentation as needed
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is part of the SpendAhead AI-powered personal finance tracker.
 
-## 🆘 Support
+---
 
-For support and questions:
-
-- Create an issue in the repository
-- Check the API documentation at `/docs`
-- Review the logs for error details
-
-## 🔄 Changelog
-
-See [CHANGELOG.md](../CHANGELOG.md) for a list of changes and version history.
+**Status**: Development Phase 1 - Foundation  
+**Last Updated**: December 2024  
+**Version**: 1.0.0

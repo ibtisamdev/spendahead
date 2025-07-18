@@ -4,9 +4,9 @@ User model for the SpendAhead backend.
 This module defines the User model with authentication and profile information.
 """
 
-
 from sqlalchemy import Boolean, Column, DateTime, String, Text
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
 from app.core.database import Base
@@ -27,6 +27,7 @@ class User(Base):
     hashed_password = Column(String(255), nullable=False)
     is_active = Column(Boolean, default=True, nullable=False)
     is_verified = Column(Boolean, default=False, nullable=False)
+    is_superuser = Column(Boolean, default=False, nullable=False)
 
     # Profile fields
     first_name = Column(String(100), nullable=True)
@@ -55,6 +56,23 @@ class User(Base):
     # Soft delete
     is_deleted = Column(Boolean, default=False, nullable=False)
     deleted_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Relationships
+    categories = relationship(
+        "Category", back_populates="user", cascade="all, delete-orphan"
+    )
+    transactions = relationship(
+        "Transaction", back_populates="user", cascade="all, delete-orphan"
+    )
+    accounts = relationship(
+        "Account", back_populates="user", cascade="all, delete-orphan"
+    )
+    budgets = relationship(
+        "Budget", back_populates="user", cascade="all, delete-orphan"
+    )
+    ai_insights = relationship(
+        "AIInsight", back_populates="user", cascade="all, delete-orphan"
+    )
 
     def __repr__(self) -> str:
         """String representation of the User model."""
