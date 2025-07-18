@@ -34,7 +34,7 @@ SpendAhead is a comprehensive financial management application that combines tra
 
 ### Technology Stack
 
-- **Frontend**: React 18 + TypeScript + Tailwind CSS
+- **Frontend**: Next.js 14 + TypeScript + Tailwind CSS
 - **Backend**: FastAPI + PostgreSQL + Redis
 - **AI**: OpenAI GPT-4 integration
 - **Infrastructure**: Local development with Docker support

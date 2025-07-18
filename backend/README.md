@@ -171,7 +171,7 @@ alembic downgrade base && alembic upgrade head
 
 1. **Authentication**: JWT implementation
 2. **API Development**: CRUD endpoints for all entities
-3. **Frontend Integration**: React frontend setup
+3. **Frontend Integration**: Next.js frontend setup
 4. **AI Integration**: OpenAI API integration
 
 ## 🤝 Contributing

@@ -35,7 +35,7 @@ SpendAhead is a comprehensive financial management application that combines tra
 
 ### Technology Stack
 
-- **Frontend**: React 18 + TypeScript + Tailwind CSS
+- **Frontend**: Next.js 14 + TypeScript + Tailwind CSS
 - **Backend**: FastAPI + PostgreSQL + Redis
 - **AI**: OpenAI GPT-4 integration
 - **Infrastructure**: Docker + AWS/Vercel deployment
@@ -80,22 +80,21 @@ Phase 5: Polish & Launch - Testing, optimization & deployment
   - Create user registration and login endpoints
   - Set up password hashing and validation
   - Implement refresh token mechanism
-  - Add email verification system
 
 #### Frontend Foundation
 
-- [ ] **React Project Setup**
-  - Initialize React 18 project with TypeScript
-  - Configure Vite for development and build
+- [ ] **Next.js Project Setup**
+  - Initialize Next.js 14 project with TypeScript
+  - Configure App Router and file-based routing
   - Set up Tailwind CSS with custom configuration
   - Install and configure ShadCN UI components
   - Set up ESLint, Prettier, and Husky
 
-- [ ] **State Management**
-  - Set up React Query for server state management
-  - Configure Zustand for client state
-  - Create API client with Axios and interceptors
-  - Set up authentication context and hooks
+- [ ] **Data Fetching & State Management**
+  - Set up Next.js built-in data fetching (Server Components)
+  - Configure client-side state with React hooks
+  - Create API client with fetch and interceptors
+  - Set up authentication context and middleware
 
 #### DevOps & Infrastructure
 
@@ -143,7 +142,7 @@ Phase 5: Polish & Launch - Testing, optimization & deployment
   - Create login and registration forms
   - Implement form validation with React Hook Form
   - Add loading states and error handling
-  - Create protected route components
+  - Create protected route components with Next.js middleware
 
 - [ ] **Layout & Navigation**
   - Design responsive layout with sidebar
@@ -164,14 +163,14 @@ Phase 5: Polish & Launch - Testing, optimization & deployment
 #### Backend-Frontend Integration
 
 - [ ] **API Integration**
-  - Connect frontend to backend APIs
+  - Connect Next.js frontend to backend APIs
   - Implement error handling and retry logic
   - Add request/response interceptors
-  - Set up authentication flow
+  - Set up authentication flow with Next.js middleware
 
 - [ ] **Testing & Quality Assurance**
-  - Write unit tests for core components
-  - Implement integration tests
+  - Write unit tests for core components with Jest and React Testing Library
+  - Implement integration tests with Playwright
   - Set up CI/CD pipeline basics
   - Add code coverage reporting
 
@@ -288,6 +287,28 @@ Phase 5: Polish & Launch - Testing, optimization & deployment
   - Implement import progress tracking
   - Add import error handling
   - Create import preview and mapping
+
+### User Management Enhancements
+
+#### Email Verification System
+
+- [ ] **Email Service Setup**
+  - Set up email service provider (SendGrid/AWS SES)
+  - Configure email templates and branding
+  - Implement email queue system
+  - Add email delivery tracking
+
+- [ ] **Email Verification Features**
+  - Add email verification on user registration
+  - Implement email verification token system
+  - Create email verification UI components
+  - Add resend verification email functionality
+
+- [ ] **Email Notifications**
+  - Set up password reset email functionality
+  - Implement account security notifications
+  - Add budget alert email notifications
+  - Create weekly/monthly report emails
 
 ---
 
@@ -484,10 +505,11 @@ Phase 5: Polish & Launch - Testing, optimization & deployment
 #### Frontend Optimization
 
 - [ ] **Performance Improvements**
-  - Implement code splitting
-  - Add lazy loading for components
-  - Optimize bundle size
+  - Implement Next.js built-in code splitting and optimization
+  - Add lazy loading for components and images
+  - Optimize bundle size with Next.js optimizations
   - Implement virtual scrolling for large lists
+  - Leverage Next.js Image component for optimization
 
 ---
 
@@ -504,7 +526,7 @@ Phase 5: Polish & Launch - Testing, optimization & deployment
   - Create performance tests
 
 - [ ] **Frontend Testing**
-  - Complete component testing
+  - Complete component testing with Jest and React Testing Library
   - Implement E2E testing with Playwright
   - Add accessibility testing
   - Create visual regression tests

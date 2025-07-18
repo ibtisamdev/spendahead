@@ -223,7 +223,7 @@ async with httpx.AsyncClient() as client:
 1. **Database Setup**: Ensure PostgreSQL is running and configured
 2. **Environment Variables**: Set up proper environment variables
 3. **Email Integration**: Implement actual email sending
-4. **Frontend Integration**: Connect with React frontend
+4. **Frontend Integration**: Connect with Next.js frontend
 5. **Production Deployment**: Deploy with proper security configuration
 
 ## 📝 Notes

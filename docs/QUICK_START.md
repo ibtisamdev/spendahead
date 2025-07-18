@@ -243,7 +243,7 @@ After successful setup:
 
 1. **Authentication**: Implement JWT authentication
 2. **API Development**: Create transaction endpoints
-3. **Frontend**: Set up React frontend
+3. **Frontend**: Set up Next.js frontend
 4. **AI Integration**: Add OpenAI categorization
 5. **Testing**: Write comprehensive tests
 

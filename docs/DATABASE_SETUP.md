@@ -344,7 +344,7 @@ After completing the database setup:
 
 1. **Authentication System**: Implement JWT-based authentication
 2. **API Development**: Create RESTful endpoints for all entities
-3. **Frontend Integration**: Connect React frontend to backend APIs
+3. **Frontend Integration**: Connect Next.js frontend to backend APIs
 4. **AI Integration**: Set up OpenAI integration for categorization
 5. **Testing**: Implement comprehensive test suite
 

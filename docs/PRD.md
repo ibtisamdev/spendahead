@@ -234,11 +234,11 @@ The application follows a modern microservices-inspired architecture with clear 
 
 #### 5.2.1 Frontend
 
-- **Framework**: React 18 with TypeScript
+- **Framework**: Next.js 14 with TypeScript
 - **Styling**: Tailwind CSS + ShadCN UI
-- **State Management**: React Query + Zustand
-- **HTTP Client**: Axios
-- **Build Tool**: Vite
+- **State Management**: Next.js built-in state management
+- **HTTP Client**: Fetch API with interceptors
+- **Build Tool**: Next.js built-in bundler
 - **Testing**: Jest + React Testing Library
 
 #### 5.2.2 Backend

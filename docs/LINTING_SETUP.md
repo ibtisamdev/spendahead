@@ -13,7 +13,7 @@ spendahead/
 │   ├── pyproject.toml         # Python tool configuration
 │   └── scripts/
 │       └── setup-linting.sh   # Backend setup script
-├── frontend/ (future)         # React TypeScript frontend
+├── frontend/ (future)         # Next.js TypeScript frontend
 │   ├── .husky/               # JS/TS hooks (when created)
 │   ├── package.json          # Frontend scripts
 │   └── scripts/
@@ -61,7 +61,7 @@ bandit -r . -x venv
 pre-commit run --all-files
 ```
 
-## Frontend Linting (Future - React/TypeScript)
+## Frontend Linting (Future - Next.js/TypeScript)
 
 ### Tools Used (When Created)
 

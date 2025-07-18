@@ -27,7 +27,7 @@ SpendAhead helps users track expenses, manage budgets, and gain AI-powered insig
 
 ### Frontend (Planned)
 
-- **React 18** - Modern UI framework
+- **Next.js 14** - Full-stack React framework
 - **TypeScript** - Type-safe JavaScript
 - **Tailwind CSS** - Utility-first CSS framework
 - **ShadCN UI** - Beautiful component library
