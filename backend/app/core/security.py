@@ -187,4 +187,4 @@ def verify_password_reset_token(token: str) -> Optional[str]:
     if not payload or payload.get("type") != "password_reset":
         return None
 
-    return payload.get("sub") 
+    return payload.get("sub")

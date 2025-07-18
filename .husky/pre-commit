@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-bunx lint-staged 
+# Run backend pre-commit hooks if backend files are staged
+if git diff --cached --name-only | grep -q "^backend/"; then
+    echo "🔧 Running backend pre-commit hooks..."
+    cd backend && pre-commit run --files $(git diff --cached --name-only | grep "^backend/" | tr '\n' ' ') && cd ..
+fi

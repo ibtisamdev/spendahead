@@ -1,58 +1,58 @@
-# FastAPI and ASGI server
-fastapi
-uvicorn[standard]
-
-# Database
-sqlalchemy
-psycopg2-binary
-asyncpg
-greenlet
-
-# Authentication and Security
-python-jose[cryptography]
-passlib[bcrypt]
-python-multipart
-
-# Environment and Configuration
-python-dotenv
-pydantic
-pydantic-settings
-
-# AI Integration
-openai
-
-# Caching and Sessions
-redis
 aioredis
+asyncpg
 
-# HTTP Client
-httpx
+# Code Quality
+black
 
 # Validation and Serialization
 email-validator
+# FastAPI and ASGI server
+fastapi
+
+# CORS
+fastapi-cors
+flake8
+greenlet
+
+# Health Checks
+healthcheck
+
+# HTTP Client
+httpx
+isort
+mypy
+
+# AI Integration
+openai
+passlib[bcrypt]
+
+# Pre-commit hooks
+pre-commit
+psycopg2-binary
+pydantic
+pydantic-settings
 
 # Development and Testing
 pytest
 pytest-asyncio
 pytest-cov
 
-# Code Quality
-black
-flake8
-isort
-mypy
+# Environment and Configuration
+python-dotenv
 
-# Pre-commit hooks
-pre-commit
+# Authentication and Security
+python-jose[cryptography]
+python-multipart
 
-# Logging
-structlog
-
-# CORS
-fastapi-cors
+# Caching and Sessions
+redis
 
 # Rate Limiting
 slowapi
 
-# Health Checks
-healthcheck 
+# Database
+sqlalchemy
+
+# Logging
+structlog
+uvicorn[standard]

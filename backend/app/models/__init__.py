@@ -6,4 +6,4 @@ This package contains SQLAlchemy models for:
 - Financial transactions
 - Categories and budgets
 - AI insights and analytics
-""" 
+"""

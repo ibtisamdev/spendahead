@@ -7,4 +7,4 @@ This package contains core application components including:
 - Security utilities
 - Logging configuration
 - Common utilities
-""" 
+"""

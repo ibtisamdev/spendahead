@@ -18,11 +18,10 @@ from slowapi.util import get_remote_address
 
 from app.api.v1 import health
 from app.core.config import settings
-from app.core.database import create_tables, engine
-from app.core.logging import setup_logging, get_logger
+from app.core.database import create_tables
+from app.core.logging import get_logger, setup_logging
 
 # Import models to ensure they're registered with SQLAlchemy
-from app.models import user
 
 # Setup logging
 setup_logging()

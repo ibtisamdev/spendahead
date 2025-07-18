@@ -7,29 +7,27 @@
     "commit": "cz",
     "commit:retry": "cz --retry",
     "prepare": "husky install",
-    "lint:backend": "cd backend && python -m black . && python -m isort . && python -m flake8 .",
+    "lint:backend": "cd backend && python -m black --check app tests && python -m isort --check-only app tests && python -m flake8 app tests && python -m mypy app",
+    "lint:backend:fix": "cd backend && python -m black app tests && python -m isort app tests && python -m autoflake --in-place --remove-all-unused-imports --remove-unused-variables --recursive app tests",
     "test:backend": "cd backend && python -m pytest",
     "lint:frontend": "echo 'Frontend linting will be added when frontend is created'",
-    "test:frontend": "echo 'Frontend testing will be added when frontend is created'"
+    "test:frontend": "echo 'Frontend testing will be added when frontend is created'",
+    "lint:all": "npm run lint:backend && npm run lint:frontend",
+    "test:all": "npm run test:backend && npm run test:frontend",
+    "setup:backend": "cd backend && ./scripts/setup-linting.sh",
+    "setup:frontend": "echo 'Frontend setup will be added when frontend is created'"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
-    "prettier": "^3.1.0"
+    "husky": "^8.0.3"
   },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md}": [
-      "prettier --write"
-    ]
   },
   "keywords": [
     "finance",

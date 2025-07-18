@@ -375,5 +375,5 @@ Thumbs.db
 # Application specific
 uploads/
 media/
-staticfiles/ 
+staticfiles/
 node_modules

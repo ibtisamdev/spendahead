@@ -6,4 +6,4 @@ This package contains all tests organized by feature:
 - Integration tests for API endpoints
 - Database tests for models and queries
 - Security tests for authentication and authorization
-""" 
+"""

@@ -52,6 +52,7 @@ fi
 # Install pre-commit hooks
 echo "🔒 Installing pre-commit hooks..."
 pre-commit install
+pre-commit install --hook-type commit-msg
 
 echo "✅ Setup completed successfully!"
 echo ""
@@ -60,4 +61,4 @@ echo "1. Update .env file with your database and API credentials"
 echo "2. Start the development server: python -m uvicorn app.main:app --reload"
 echo "3. Access the API documentation at: http://localhost:8000/docs"
 echo ""
-echo "Happy coding! 🎉" 
+echo "Happy coding! 🎉"

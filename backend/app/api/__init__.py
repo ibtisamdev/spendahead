@@ -7,4 +7,4 @@ This package contains all API endpoints organized by feature:
 - Categories and budgets
 - AI insights and analytics
 - Health checks and monitoring
-""" 
+"""

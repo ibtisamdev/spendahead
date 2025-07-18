@@ -5,17 +5,15 @@ This module provides common fixtures and configuration for all tests.
 """
 
 import asyncio
-import pytest
 from typing import AsyncGenerator, Generator
 from unittest.mock import AsyncMock
 
+import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from app.core.config import settings
 from app.core.database import Base, get_db
 from app.main import app
-
 
 # Test database URL
 TEST_DATABASE_URL = (

@@ -28,7 +28,9 @@ def setup_logging() -> None:
             structlog.processors.StackInfoRenderer(),
             structlog.processors.format_exc_info,
             structlog.processors.UnicodeDecoder(),
-            structlog.processors.JSONRenderer() if settings.log_format == "json" else structlog.dev.ConsoleRenderer(),
+            structlog.processors.JSONRenderer()
+            if settings.log_format == "json"
+            else structlog.dev.ConsoleRenderer(),
         ],
         context_class=dict,
         logger_factory=LoggerFactory(),
@@ -95,4 +97,4 @@ def log_error(
             "error_message": str(error),
         }
     )
-    logger.error("Error occurred", **error_context, exc_info=True) 
+    logger.error("Error occurred", **error_context, exc_info=True)

@@ -48,4 +48,4 @@
 #   including proper token validation and user profile creation.
 #
 #   Closes #123
-#   Breaking: removes legacy username/password login 
+#   Breaking: removes legacy username/password login

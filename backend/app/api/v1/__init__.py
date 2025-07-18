@@ -6,4 +6,4 @@ This package contains versioned API endpoints for:
 - Financial transactions
 - Categories and budgets
 - AI insights and analytics
-""" 
+"""

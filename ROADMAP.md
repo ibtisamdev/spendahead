@@ -1,8 +1,8 @@
 # 🗺️ SpendAhead - Development Roadmap
 
-**Project**: AI-Powered Personal Finance Tracker  
-**Version**: 2.0  
-**Last Updated**: December 2024  
+**Project**: AI-Powered Personal Finance Tracker
+**Version**: 2.0
+**Last Updated**: December 2024
 **Status**: Planning Phase
 
 ---
@@ -705,6 +705,6 @@ Phase 5: Polish & Launch - Testing, optimization & deployment
 
 ---
 
-**Last Updated**: December 2024  
-**Next Review**: Weekly during development  
+**Last Updated**: December 2024
+**Next Review**: Weekly during development
 **Contact**: Development Team

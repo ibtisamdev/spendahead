@@ -5,7 +5,6 @@ This module handles all application configuration using Pydantic settings
 for type safety and environment variable management.
 """
 
-import os
 from typing import List, Optional
 
 from pydantic import Field, field_validator

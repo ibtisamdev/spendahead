@@ -4,8 +4,6 @@ User model for the SpendAhead backend.
 This module defines the User model with authentication and profile information.
 """
 
-from datetime import datetime
-from typing import Optional
 
 from sqlalchemy import Boolean, Column, DateTime, String, Text
 from sqlalchemy.dialects.postgresql import UUID

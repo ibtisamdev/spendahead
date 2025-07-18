@@ -6,4 +6,4 @@ including authentication, database models, API endpoints, and AI integration.
 """
 
 __version__ = "0.1.0"
-__author__ = "SpendAhead Team" 
+__author__ = "SpendAhead Team"

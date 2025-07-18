@@ -1,10 +1,10 @@
 # 🧾 SpendAhead - AI-Powered Personal Finance Tracker - Product Requirements Document (PRD)
 
-**Project Name**: SpendAhead  
-**Domain**: spendahead.com  
-**Project Type**: Full-Stack Portfolio Project (Backend + Frontend + AI)  
-**Version**: 2.0  
-**Last Updated**: December 2024  
+**Project Name**: SpendAhead
+**Domain**: spendahead.com
+**Project Type**: Full-Stack Portfolio Project (Backend + Frontend + AI)
+**Version**: 2.0
+**Last Updated**: December 2024
 **Status**: In Development
 
 ---

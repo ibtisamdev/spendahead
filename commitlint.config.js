@@ -36,6 +36,7 @@ module.exports = {
         'security',
         'docker',
         'docs',
+        'linting',
       ],
     ],
     'scope-case': [2, 'always', 'lowercase'],
