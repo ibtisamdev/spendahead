@@ -2,14 +2,14 @@
 
 import type React from "react"
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
 import { DollarSign, Eye, EyeOff, Loader2 } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -19,20 +19,50 @@ export function LoginForm() {
     password: "",
     rememberMe: false,
   })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [loginError, setLoginError] = useState("")
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required"
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email"
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Password is required"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setLoginError("")
+
+    if (!validateForm()) {
+      return
+    }
+
     setIsLoading(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    // TODO: Replace with server action
+    // const success = await loginAction(formData)
+
+    // For now, simulate the action
+    await new Promise((resolve) => setTimeout(resolve, 1000))
     setIsLoading(false)
-    // Redirect to dashboard
-    window.location.href = "/dashboard"
+
+    // TODO: Handle success/error from server action
+    setLoginError("Login functionality will be implemented with server actions")
   }
 
   return (
     <Card className="w-full max-w-md shadow-2xl border-0">
-      <CardHeader className="text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg">
+      <CardHeader className="text-center bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-t-lg">
         <div className="flex items-center justify-center gap-2 mb-2">
           <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
             <DollarSign className="h-5 w-5" />
@@ -40,10 +70,16 @@ export function LoginForm() {
           <span className="text-xl font-bold">SpendAhead</span>
         </div>
         <CardTitle className="text-2xl">Welcome Back</CardTitle>
-        <p className="text-blue-100">Sign in to your account</p>
+        <p className="text-emerald-100">Sign in to your account</p>
       </CardHeader>
       <CardContent className="p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
+          {loginError && (
+            <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm text-red-600">{loginError}</p>
+            </div>
+          )}
+
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -52,8 +88,11 @@ export function LoginForm() {
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-              required
+              className={errors.email ? "border-red-500" : ""}
             />
+            {errors.email && (
+              <p className="text-xs text-red-500">{errors.email}</p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -65,7 +104,7 @@ export function LoginForm() {
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={(e) => setFormData((prev) => ({ ...prev, password: e.target.value }))}
-                required
+                className={errors.password ? "border-red-500" : ""}
               />
               <Button
                 type="button"
@@ -77,6 +116,9 @@ export function LoginForm() {
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </Button>
             </div>
+            {errors.password && (
+              <p className="text-xs text-red-500">{errors.password}</p>
+            )}
           </div>
 
           <div className="flex items-center justify-between">
@@ -90,14 +132,14 @@ export function LoginForm() {
                 Remember me
               </Label>
             </div>
-            <Link href="/auth/reset-password" className="text-sm text-blue-600 hover:text-blue-700">
+            <Link href="/auth/reset-password" className="text-sm text-emerald-600 hover:text-emerald-700">
               Forgot password?
             </Link>
           </div>
 
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+            className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -151,7 +193,7 @@ export function LoginForm() {
 
           <div className="text-center text-sm">
             Don't have an account?{" "}
-            <Link href="/auth/signup" className="text-blue-600 hover:text-blue-700 font-medium">
+            <Link href="/auth/signup" className="text-emerald-600 hover:text-emerald-700 font-medium">
               Sign up
             </Link>
           </div>

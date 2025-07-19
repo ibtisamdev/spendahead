@@ -23,6 +23,7 @@ import {
   CreditCard,
   DollarSign,
   Home,
+  LogOut,
   Settings,
   Sparkles,
   Tag,
@@ -87,6 +88,41 @@ const navigationItems = [
 export function AppSidebar() {
   const { state } = useSidebar()
   const pathname = usePathname()
+
+  // TODO: Get user data from server-side props or server actions
+  const user = {
+    id: "1",
+    email: "user@example.com",
+    firstName: "User",
+    lastName: "Demo",
+    isPremium: true,
+  }
+
+  const getUserInitials = () => {
+    if (!user) return "U"
+    return `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`
+  }
+
+  const getUserDisplayName = () => {
+    if (!user) return "User"
+    return `${user.firstName} ${user.lastName}`
+  }
+
+  const getUserEmail = () => {
+    if (!user) return "user@example.com"
+    return user.email
+  }
+
+  const getUserMembership = () => {
+    if (!user) return "Free Member"
+    return user.isPremium ? "Premium Member" : "Free Member"
+  }
+
+  const handleLogout = () => {
+    // TODO: Replace with server action
+    // await logoutAction()
+    window.location.href = "/auth/login"
+  }
 
   return (
     <Sidebar variant="sidebar" className="border-r border-gray-200 bg-gray-50/80 backdrop-blur-md shadow-sm">
@@ -195,16 +231,16 @@ export function AppSidebar() {
                 >
                   <div className="flex items-center gap-3 w-full">
                     <Avatar className="h-12 w-12 rounded-xl shadow-lg border-2 border-gray-200">
-                      <AvatarImage src="/placeholder.svg?height=48&width=48" alt="Sarah Johnson" />
+                      <AvatarImage src="/placeholder.svg?height=48&width=48" alt={getUserDisplayName()} />
                       <AvatarFallback className="rounded-xl bg-gradient-to-br from-gray-600 to-gray-700 text-white font-black text-lg">
-                        SJ
+                        {getUserInitials()}
                       </AvatarFallback>
                     </Avatar>
                     {state === "expanded" && (
                       <div className="flex-1 text-left">
-                        <div className="font-bold text-gray-900 text-sm">Sarah Johnson</div>
-                        <div className="text-xs text-gray-600 font-medium">Premium Member</div>
-                        <div className="text-xs text-gray-500">sarah@example.com</div>
+                        <div className="font-bold text-gray-900 text-sm">{getUserDisplayName()}</div>
+                        <div className="text-xs text-gray-600 font-medium">{getUserMembership()}</div>
+                        <div className="text-xs text-gray-500">{getUserEmail()}</div>
                       </div>
                     )}
                     {state === "expanded" && (
@@ -220,8 +256,8 @@ export function AppSidebar() {
                 sideOffset={8}
               >
                 <div className="p-3 mb-2 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-200">
-                  <div className="font-semibold text-gray-900">Sarah Johnson</div>
-                  <div className="text-xs text-gray-500">Premium Member</div>
+                  <div className="font-semibold text-gray-900">{getUserDisplayName()}</div>
+                  <div className="text-xs text-gray-500">{getUserMembership()}</div>
                 </div>
                 <DropdownMenuItem className="rounded-xl p-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200">
                   <User className="mr-3 h-5 w-5 text-gray-600" />
@@ -238,7 +274,11 @@ export function AppSidebar() {
                   </div>
                 </DropdownMenuItem>
                 <div className="h-px bg-gray-200 my-2" />
-                <DropdownMenuItem className="rounded-xl p-4 cursor-pointer hover:bg-red-50 transition-colors duration-200 text-red-600 focus:text-red-600">
+                <DropdownMenuItem
+                  className="rounded-xl p-4 cursor-pointer hover:bg-red-50 transition-colors duration-200 text-red-600 focus:text-red-600"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="mr-3 h-5 w-5" />
                   <div className="font-semibold">Sign out</div>
                 </DropdownMenuItem>
               </DropdownMenuContent>

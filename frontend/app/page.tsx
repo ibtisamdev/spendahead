@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation"
 
 export default function HomePage() {
-  redirect("/dashboard")
+  // Middleware will handle the redirect based on authentication status
+  // This page won't be reached due to middleware redirects
+  return null
 }
